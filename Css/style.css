@@ -1,0 +1,31 @@
+/* google font import */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Cookie&family=Fredoka+One&family=Mochiy+Pop+P+One&family=Pacifico&family=Poppins:ital@0;1&family=Righteous&family=Secular+One&display=swap');
+
+/* nav part style */
+.mobile-nav{
+    font-size: x-large;
+    color: orange;
+    font-family: 'Abril Fatface', cursive;
+
+    font-family: 'Anton', sans-serif;
+
+    font-family: 'Cookie', cursive;
+
+    font-family: 'Fredoka One', cursive;
+
+    font-family: 'Mochiy Pop P One', sans-serif;
+
+    font-family: 'Pacifico', cursive;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-family: 'Righteous', cursive;
+
+    font-family: 'Secular One', sans-serif;
+
+
+}
+/* body style */
+body{
+    background-color: rgb(87, 46, 16);
+}
