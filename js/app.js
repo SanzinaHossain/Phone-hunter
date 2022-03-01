@@ -63,9 +63,11 @@ const ShowPhoneDetails=(phoneid)=>{
 }
 const GoforDetails=(data)=>{
     let res=data.releaseDate;
+    let mf=data?.mainFeatures;
+    console.log(mf);
     if(res=='')
     {
-        res=' Not found';
+        res=' Comming Soon...';
     }
     const phoneD=document.getElementById('phone-details');
     phoneD.textContent='';
@@ -74,15 +76,14 @@ const GoforDetails=(data)=>{
     div.innerHTML=`
        <img src="${data.image}" class="card-img-top img-fluid p-3 p-lg-5" alt="...">
        <div class="card-body">
-          <h2 class="card-title text-center text-warning ">${data.name}</h2>
+          <h2 class="card-title text-center">${data.name}</h2>
           <h4 class="text-center">Brand: ${data.brand}</h4>
         </div>
        <div class="card-body">
        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Release Date: ${res}</li>
-           <li class="list-group-item">A second item</li>
-           <li class="list-group-item">A third item</li>
-           <li class="list-group-item">A third item</li>
+           <li class="list-group-item"><span>Release Date: </span>${res}</li>
+           <li class="list-group-item"><h4>Mainfeatures:</h4><span>Storage: </span>${data.mainFeatures.storage}<br><span>Memory: </span>${data.mainFeatures.memory}<br><span>Display: </span>${data.mainFeatures.displaySize}</li>
+           <li class="list-group-item"><span>Others: </span>${data.others}</li>
         </ul>
        </div>
     `

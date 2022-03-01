@@ -39,3 +39,8 @@ body{
 .card-details{
     border-radius: 20px;
 }
+span{
+    color:brown;
+    font-weight:700;
+    font-size: large;
+}
