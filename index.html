@@ -11,9 +11,9 @@
 </head>
 <body>
     <!-- navbar -->
-    <header>
+     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
+            <div class="container">
               <a class="navbar-brand"><span class="mobile-nav">Mobile Planet</span></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,33 +29,28 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Phones
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Iphone</a></li>
-                      <li><a class="dropdown-item" href="#">Samsung</a></li>
-                      <li><a class="dropdown-item" href="#">Huwai</a></li>
-                    </ul>
-                  </li>
                 </ul>
               </div>
             </div>
           </nav>
     </header>
-    <main>
+    <main class="container-fluid">
         <!-- search part -->
            <div class="search-part mt-4">
-               <h1 class="text-center text-white">Search From Mobile Planet</h1>
+               <h1 class="text-center text-warning">Search From Mobile Planet</h1>
                <div class="input-group mb-3 w-75 mx-auto">
-                <input type="text" class="form-control" placeholder="Search your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn bg-warning text-black" type="button" id="search-btn">Search</button>
+                <input id="search-field"t ype="text" class="form-control" placeholder="Search your phone" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button onclick="searchPhone()" class="btn search-button bg-warning" type="button" id="search-button">Search</button>
               </div>
            </div>
         <!-- phone details part -->
+            <div id="phone-details">
 
+            </div>
         <!-- Phone show part -->
+        <div id="data-show" class="row row-cols-1 row-cols-md-3 g-4 p-3">
+                 
+        </div>
     </main>
     <!-- javascript link and connection -->
     <script src="js/app.js"></script>

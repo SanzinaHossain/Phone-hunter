@@ -29,3 +29,9 @@
 body{
     background-color: rgb(87, 46, 16);
 }
+/* error message style */
+.error-msg{
+    background-color: black;
+    color:red;
+    font-weight: 600;
+}
