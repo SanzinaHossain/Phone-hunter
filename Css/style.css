@@ -35,3 +35,7 @@ body{
     color:red;
     font-weight: 600;
 }
+/* show mobile details*/
+.card-details{
+    border-radius: 20px;
+}
