@@ -139,7 +139,7 @@ const GoforDetails=(data)=>{
     const phoneD=document.getElementById('phone-details');
     phoneD.textContent='';
     const div=document.createElement('div');
-    div.classList.add('card','card-details','m-3','mx-auto','w-50');
+    div.classList.add('card','card-details','m-3','mx-auto','w-75');
     //others feature not found
     if(df==undefined)
     {
