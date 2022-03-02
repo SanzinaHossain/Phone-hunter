@@ -36,7 +36,6 @@ const searchPhone=()=>
 // mobile phone show
 const PhoneShow=(Phones)=>{
     clean();
-    console.log(Phones);
     for(const phone of Phones.slice(0,20))
         {
             const mobileShow=document.getElementById('data-show');
@@ -65,7 +64,7 @@ const ShowPhoneDetails=(phoneid)=>{
 }
 //mobile details show
 const GoforDetails=(data)=>{
-    console.log(data);
+    let df=data?.others;
     let mf=data?.mainFeatures?.sensors;
     let sensordata;
     if(mf.length!=0)
@@ -80,7 +79,29 @@ const GoforDetails=(data)=>{
     phoneD.textContent='';
     const div=document.createElement('div');
     div.classList.add('card','card-details','m-3','mx-auto','w-50');
-    div.innerHTML=`
+    if(df==undefined)
+    {
+        div.innerHTML=`
+        <img src="${data.image}" class="card-img-top img-fluid p-3 p-lg-5" alt="...">
+        <div class="card-body">
+           <h2 class="card-title text-center">${data.name}</h2>
+           <h4 class="text-center">Brand: ${data.brand}</h4>
+         </div>
+        <div class="card-body">
+        <ul class="list-group list-group-flush">
+ 
+            <li class="list-group-item"><span>Release Date: </span>${data.releaseDate? data.releaseDate:'Comming soon....'}</li>
+            
+            <li class="list-group-item"><h4>Mainfeatures:</h4><span>Storage: </span>${data.mainFeatures.storage?data.mainFeatures.storage:'No Data found'}<br><span>Memory: </span>${data.mainFeatures.memory? data.mainFeatures.memory:'No Data Found'}<br><span>Display: </span>${data.mainFeatures.displaySize ? data.mainFeatures.displaySize:'No Data Found'}<br><span>Sensors: </span>${sensordata}</li>
+             
+            <li class="list-group-item"><h4>Others:<br>${data.others ? data.others:'<span>No  others Feature found for this mobile</span>'}</h4></li>
+            </ul>
+            </div>
+         `
+    }
+    else
+    {
+        div.innerHTML=`
        <img src="${data.image}" class="card-img-top img-fluid p-3 p-lg-5" alt="...">
        <div class="card-body">
           <h2 class="card-title text-center">${data.name}</h2>
@@ -93,9 +114,10 @@ const GoforDetails=(data)=>{
            
            <li class="list-group-item"><h4>Mainfeatures:</h4><span>Storage: </span>${data.mainFeatures.storage?data.mainFeatures.storage:'No Data found'}<br><span>Memory: </span>${data.mainFeatures.memory? data.mainFeatures.memory:'No Data Found'}<br><span>Display: </span>${data.mainFeatures.displaySize ? data.mainFeatures.displaySize:'No Data Found'}<br><span>Sensors: </span>${sensordata}</li>
            
-           <li class="list-group-item"><h4>Others:</h4><span>Bluetooth: </span>${data.others.Bluetooth ? data.others.Bluetooth:'No data Found' }<br><span>GPS: </span>${data.others.GPS ? data.others.GPS:'No Data Found'}<br><span>NFC: </span>${data.others.NFC ? data.others.NFC:'No Data Foound'}<br><span>Radio: </span>${data.others.Radio ? data.others.Radio:'No Data Found'}<br><span>USB: </span>${data.others.USB ? data.others.USB:'No Data Found'}<br><span>WLAN: </span>${data.others.WLAN ? data.others.WLAN:'No Data Found'}</li>
+           <li class="list-group-item"><h4>Others:<br></h4><span>Bluetooth: </span>${data.others.Bluetooth ? data.others.Bluetooth:'No data Found' }<br><span>GPS: </span>${data.others.GPS ? data.others.GPS:'No Data Found'}<br><span>NFC: </span>${data.others.NFC ? data.others.NFC:'No Data Foound'}<br><span>Radio: </span>${data.others.Radio ? data.others.Radio:'No Data Found'}<br><span>USB: </span>${data.others.USB ? data.others.USB:'No Data Found'}<br><span>WLAN: </span>${data.others.WLAN ? data.others.WLAN:'No Data Found'}</li>
         </ul>
        </div>
     `
+    }
     phoneD.appendChild(div);
 }
