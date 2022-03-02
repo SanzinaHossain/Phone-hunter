@@ -44,5 +44,3 @@ span{
     font-weight:700;
     font-size: large;
 }
-
-/* <li class="list-group-item"><h4>Others:</h4><span>Bluetooth: </span>${data.others.Bluetooth ? data.others.Bluetooth:'No data Found' }<br><span>GPS: </span>${data.others.GPS ? data.others.GPS:'No Data Found'}<br><span>NFC: </span>${data.others.NFC ? data.others.NFC:'No Data Foound'}<br><span>Radio: </span>${data.others.Radio ? data.others.Radio:'No Data Found'}<br><span>USB: </span>${data.others.USB ? data.others.USB:'No Data Found'}<br><span>WLAN: </span>${data.others.WLAN ? data.others.WLAN:'No Data Found'}</li> */

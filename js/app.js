@@ -35,7 +35,21 @@ const searchPhone=()=>
 }
 // mobile phone show
 const PhoneShow=(Phones)=>{
-    clean();
+    //if you dont find any phone 
+    if(Phones.length==0)
+    {
+        clean();
+        const phoneDetails=document.getElementById('phone-details');
+        const div=document.createElement('div');
+        div.classList.add('error-msg','mx-auto','w-50');
+        div.innerHTML=`
+            <p class="text-center">No Phone found with this name  !!!!!</p>
+        `
+        phoneDetails.appendChild(div);
+    }
+    //if you find our desire phone
+    else{
+        clean();
     for(const phone of Phones.slice(0,20))
         {
             const mobileShow=document.getElementById('data-show');
@@ -54,6 +68,7 @@ const PhoneShow=(Phones)=>{
             mobileShow.appendChild(div);
 
         }
+    }
 }
 //phone show api call
 const ShowPhoneDetails=(phoneid)=>{
@@ -79,6 +94,7 @@ const GoforDetails=(data)=>{
     phoneD.textContent='';
     const div=document.createElement('div');
     div.classList.add('card','card-details','m-3','mx-auto','w-50');
+    //others feature not found
     if(df==undefined)
     {
         div.innerHTML=`
@@ -99,6 +115,7 @@ const GoforDetails=(data)=>{
             </div>
          `
     }
+    //other feature found
     else
     {
         div.innerHTML=`
