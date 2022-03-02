@@ -38,7 +38,7 @@ const searchPhone=()=>
 // mobile phone show
 const PhoneShow=(Phones)=>{
     //brand name store for api call
-    let p=Phones[0].brand;
+    let p=Phones[0]?.brand;
      //if you dont find any phone 
     if(Phones.length==0)
     {
