@@ -5,6 +5,8 @@ const clean=()=>
         phoneDetails.textContent='';
         const phoneShow=document.getElementById('data-show');
         phoneShow.textContent='';
+        const d=document.getElementById('extra-data');
+        d.textContent='';
 }
 // search value catch
 const searchPhone=()=>
@@ -12,7 +14,7 @@ const searchPhone=()=>
     const searchField=document.getElementById('search-field');
     const searchText=searchField.value;
     searchField.value='';
-    if(searchText=='')
+    if(searchText=='' || !isNaN(searchText))
     {
         clean();
         const phoneDetails=document.getElementById('phone-details');
@@ -35,7 +37,9 @@ const searchPhone=()=>
 }
 // mobile phone show
 const PhoneShow=(Phones)=>{
-    //if you dont find any phone 
+    //brand name store for api call
+    let p=Phones[0].brand;
+     //if you dont find any phone 
     if(Phones.length==0)
     {
         clean();
@@ -50,7 +54,7 @@ const PhoneShow=(Phones)=>{
     //if you find our desire phone
     else{
         clean();
-    for(const phone of Phones.slice(0,20))
+        for(const phone of Phones.slice(0,20))
         {
             const mobileShow=document.getElementById('data-show');
             const div=document.createElement('div');
@@ -68,8 +72,50 @@ const PhoneShow=(Phones)=>{
             mobileShow.appendChild(div);
 
         }
+        if(Phones.length>20)
+        {
+            const d=document.getElementById('extra-data');
+            d.innerHTML=`
+                <button onclick="fetchcall('${p}') "style="font-weight:700;margin-left:30px;background-color:yellowgreen;"class=" rounded bg-warning">See More...</button><br><br>
+            `;
+
+        }
     }
 }
+// call api fetch for extra data show
+const fetchcall=(Phones)=>
+    {
+        const url=`https://openapi.programming-hero.com/api/phones?search=${Phones}`;
+        
+        fetch(url)
+          .then(res=>res.json())
+          .then(data=>extradatashow(data.data));
+    }
+ // extra data show
+const extradatashow=(Phones)=>{
+
+        for(const phone of Phones.slice(21,Phones.length))
+        {
+            const mobileShow=document.getElementById('data-show');
+            const div=document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML=`
+               <div style="background-color:wheat;" class="card h-100 p-3">
+                  <img src="${phone.image}" style="height:400px;width:300px;" class="card-img-top img-fluid" alt="...">
+                <div style="background-color:wheat;"class="card-body">
+                   <h3 class="card-title text-center">${phone.phone_name}</h3>
+                   <h5 class="card-title text-center">Brand: ${phone.brand}</h5>
+                </div>
+                 <button onclick="ShowPhoneDetails('${phone.slug}') "style="font-weight:700;background-color:yellowgreen;"class=" rounded bg-warning">Details</button>
+               </div>
+            `;
+            mobileShow.appendChild(div);
+
+        }
+        const d=document.getElementById('extra-data');
+        d.textContent='';
+    }
+
 //phone show api call
 const ShowPhoneDetails=(phoneid)=>{
     const url=`https://openapi.programming-hero.com/api/phone/${phoneid}`;
@@ -115,7 +161,7 @@ const GoforDetails=(data)=>{
             </div>
          `
     }
-    //other feature found
+//other feature found
     else
     {
         div.innerHTML=`
@@ -126,7 +172,6 @@ const GoforDetails=(data)=>{
         </div>
        <div class="card-body">
        <ul class="list-group list-group-flush">
-
            <li class="list-group-item"><span>Release Date: </span>${data.releaseDate? data.releaseDate:'Comming soon....'}</li>
            
            <li class="list-group-item"><h4>Mainfeatures:</h4><span>Storage: </span>${data.mainFeatures.storage?data.mainFeatures.storage:'No Data found'}<br><span>Memory: </span>${data.mainFeatures.memory? data.mainFeatures.memory:'No Data Found'}<br><span>Display: </span>${data.mainFeatures.displaySize ? data.mainFeatures.displaySize:'No Data Found'}<br><span>Sensors: </span>${sensordata}</li>
